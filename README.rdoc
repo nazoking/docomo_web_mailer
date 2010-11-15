@@ -1,6 +1,45 @@
 = docomo_web_mailer
 
-Description goes here.
+== DESCRIPTION:
+
+Docomo Web Mail Scraiper
+
+Docomo Web Mail is http://dwmail.jp/
+
+== FEATURES/PROBLEMS:
+
+* listup folders
+* listup mail in folder
+* get mail header
+* get mail mime-parts
+* get attachement file
+
+* can not manipulation, send mail 
+
+
+== SYNOPSIS:
+
+ Mail forwarding
+
+ mailer = DocomoWebMailer.new
+ mailer.login( login_id, password )
+ maillist = mailer.mail_list_start(mailer.mail_label_list[:inbox],1000) 
+ #nextmaillist = mailer.mail_list_get(maillist,1001,1000)
+ Net::SMTP.start( your_smtp_server, 25 ) {|smtp|
+   for mail in maillist
+     puts "#{mail.uid}:#{mail.subject.tosjis}"
+     smtp.send_mail mailer.make_mail_to_smtp( mail ), mail.from, forwarding_mail_address
+   end
+ }
+
+== REQUIREMENTS:
+
+* mechanize >= 1.0
+* json 
+
+== INSTALL:
+
+* gem install nazoking-docomo_web_mailer
 
 == Contributing to docomo_web_mailer
  
@@ -14,6 +53,9 @@ Description goes here.
 
 == Copyright
 
+   nazoking@gmail.com
+
+(The MIT License)
 Copyright (c) 2010 nazoking. See LICENSE.txt for
 further details.
 
