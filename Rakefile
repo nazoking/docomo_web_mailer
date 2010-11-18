@@ -15,13 +15,14 @@ Jeweler::Tasks.new do |gem|
   gem.name = "docomo_web_mailer"
   gem.homepage = "http://github.com/nazoking/docomo_web_mailer"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Docomo Web Mail Client}
+  gem.description = %Q{Docomo Web Mail ( http://dwmail.jp/ ) をRubyからいじることの出来るライブラリです。現在は受信のみ対応しており、送信や削除することは出来ません。 }
   gem.email = "nazoking@gmail.com"
   gem.authors = ["nazoking"]
   # Include your dependencies below. Runtime dependencies are required when using your gem,
   # and development dependencies are only needed for development (ie running rake tasks, tests, etc)
-  #  gem.add_runtime_dependency 'jabber4r', '> 0.1'
+  gem.add_runtime_dependency 'mechanize', '> 1.0'
+  gem.add_runtime_dependency 'json'
   #  gem.add_development_dependency 'rspec', '> 1.2.3'
 end
 Jeweler::RubygemsDotOrgTasks.new

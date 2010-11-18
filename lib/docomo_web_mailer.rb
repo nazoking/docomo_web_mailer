@@ -16,8 +16,9 @@
 #    end
 #  }
 #
-require 'mechanize'
+require 'rubygems'
 require 'json'
+require 'mechanize'
 require 'cgi'
 require 'base64'
 
