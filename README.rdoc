@@ -8,18 +8,22 @@ Docomo Web Mail is http://dwmail.jp/
 
 == FEATURES/PROBLEMS:
 
-* listup folders
-* listup mail in folder
-* get mail header
-* get mail mime-parts
-* get attachement file
+* フォルダのリストを得ることが出来ます。
+* フォルダ内のメールのリストを得ることが出来ます。
+* メールのヘッダを得ることが出来ます。
+* メールのmimeパートを得ることが出来ます。
+* メールの添付ファイルを得ることが出来ます。
+* 得たメールをsmtp用の文章に変換することが出来ます。
 
-* can not manipulation, send mail 
+* メールを送ったり削除することは出来ません。
 
 
 == SYNOPSIS:
 
- Mail forwarding
+メール転送の例
+login_id , password = dwmail のid,password
+your_smtp_server = smtpサーバ
+forwarding_mail_address = 転送先
 
  mailer = DocomoWebMailer.new
  mailer.login( login_id, password )
@@ -27,7 +31,6 @@ Docomo Web Mail is http://dwmail.jp/
  #nextmaillist = mailer.mail_list_get(maillist,1001,1000)
  Net::SMTP.start( your_smtp_server, 25 ) {|smtp|
    for mail in maillist
-     puts "#{mail.uid}:#{mail.subject.tosjis}"
      smtp.send_mail mailer.make_mail_to_smtp( mail ), mail.from, forwarding_mail_address
    end
  }
@@ -39,7 +42,7 @@ Docomo Web Mail is http://dwmail.jp/
 
 == INSTALL:
 
-* gem install nazoking-docomo_web_mailer
+* gem install docomo_web_mailer
 
 == Contributing to docomo_web_mailer
  
